@@ -1,0 +1,94 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    padding-top:55px;
+}
+
+
+.container-1{
+    background: #656d4a;
+    color:white;
+    padding:6rem 0;
+}
+.container-1 h1{
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+/* .container-1 p{
+    line-height:27px;
+} */
+
+.container-1 button{
+    background:#fff3b0;
+    color:#656d4a;
+    border-radius: 5px; 
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.6s ease;
+
+}
+.container-1 button:hover{
+    color: #fff3b0;
+    background:#656d4a;
+    border: 1px solid #fff3b0;
+    transform: scale(1.05);
+    transition: all 0.6s ease;
+}
+
+.about-container{
+    background: #f0e9d2;
+    color:#656d4a;
+    padding: 5rem 0;
+}
+.about-me{
+    height:70%;
+}
+.about-container .about-container h2{
+    color:#656d4a;
+}
+.about-container .about-container p{
+    line-height: 27px;
+}
+.password-card{
+    transition: all 0.4s ease;
+}
+.password-card:hover{
+    transform: translate(0px, -10px);
+    transition: all 0.4s ease;
+}
+
+.project-card{
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover{
+  transform: translateY(-10px);
+}
+.submit-btn{
+    transition: all 1s ease;
+}
+
+.submit-btn:hover{
+    color: #656d4a;
+    background: #fff3b0;
+    border: 1px solid #656d4a;
+    transform: scale(1.05);    
+    transition: all 0.4s ease;
+}
+
+.service-card1{
+  transition: all 0.3s ease;
+}
+
+.service-card1:hover{
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
