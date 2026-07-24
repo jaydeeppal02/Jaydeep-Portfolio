@@ -8,6 +8,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
+    overflow-x: hidden;
     padding-top:55px;
 }
 
@@ -42,11 +43,27 @@ body{
     transform: scale(1.05);
     transition: all 0.6s ease;
 }
-
+.content-container{
+    animation:homeAnimeText 1s linear;
+    /* animation-timeline: view();
+    animation-range: entry 0% cover 50%; */
+}
+.img-container{
+    animation:heroAnime 0.2s linear;
+}
+@keyframes heroAnime {
+    from{
+        transform: scale(0.6);
+    }
+    to{
+        transform: scale(1);
+    }
+}
 .about-container{
     background: #f0e9d2;
     color:#656d4a;
     padding: 5rem 0;
+    
 }
 .about-me{
     height:70%;
@@ -56,6 +73,16 @@ body{
 }
 .about-container .about-container p{
     line-height: 27px;
+}
+.about-img{
+    animation: aboutAnime linear;
+    animation-timeline: view();
+    animation-range: entry 0%;
+}
+.about-text{
+    animation: aboutAnimeText linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
 }
 .password-card{
     transition: all 0.4s ease;
@@ -75,6 +102,9 @@ body{
 .submit-btn{
     transition: all 1s ease;
 }
+.contact-form div input:required{
+    border-color:red !important;
+}
 
 .submit-btn:hover{
     color: #656d4a;
@@ -82,6 +112,9 @@ body{
     border: 1px solid #656d4a;
     transform: scale(1.05);    
     transition: all 0.4s ease;
+}
+form small{
+    color:red;
 }
 
 .service-card1{
@@ -91,4 +124,243 @@ body{
 .service-card1:hover{
   transform: translateY(-10px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.text-service{
+    animation: serviceAnime 2s linear;
+    animation-timeline:view() ;
+    animation-range: entry 50% ;
+}
+@keyframes serviceAnime {
+    from{
+        transform:scale(0.4);
+    }
+    to{
+        transform:scale(1);
+    }
+}
+.service-card{
+  animation: serviceAnimecard 2s linear;
+    animation-timeline:view() ;
+    animation-range: entry 50% ;
+}
+@keyframes serviceAnimecard {
+    from{
+        transform:translateY(100%);
+    }
+    to{
+        transform:translateY(0%);
+    }
+}
+
+.services-container{
+    background: linear-gradient(135deg, #f7f4ea 0%, #eef2e7 100%);
+    padding: 5rem 0;
+}
+
+.skill-card{
+    background: #ffffff;
+    border: 1px solid rgba(101, 109, 74, 0.12);
+    border-radius: 22px;
+    padding: 1.8rem 1.2rem;
+    box-shadow: 0 12px 30px rgba(101, 109, 74, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #656d4a, #fff3b0);
+}
+
+.skill-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px rgba(101, 109, 74, 0.16);
+}
+
+.skill-card:hover .skill-icon-wrap{
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #fff3b0, #f7f4ea);
+}
+
+.skill-icon-wrap{
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f7f4ea, #fff3b0);
+    box-shadow: inset 0 0 0 1px rgba(101, 109, 74, 0.08);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.skill-card h3{
+    color: #414833;
+    font-weight: 700;
+}
+
+.skill-card p{
+    color: #5f6750;
+    margin-top: 0.7rem;
+    line-height: 1.7;
+}
+
+.skill-tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+.skill-tags li{
+    background: #f0e9d2;
+    color: #414833;
+    border-radius: 999px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.text-service p{
+    max-width: 700px;
+    margin: 0 auto;
+    color: #5f6750;
+}
+
+.skill-grid{
+    perspective: 1000px;
+}
+
+.reveal{
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skill-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px rgba(101, 109, 74, 0.16);
+}
+
+.skill-card h3{
+    color: #414833;
+    font-weight: 700;
+}
+
+.skill-card p{
+    color: #5f6750;
+    margin-top: 0.7rem;
+    line-height: 1.7;
+}
+
+.skill-tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+.skill-tags li{
+    background: #f0e9d2;
+    color: #414833;
+    border-radius: 999px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.text-service p{
+    max-width: 700px;
+    margin: 0 auto;
+    color: #5f6750;
+}
+@keyframes appear{
+    from{
+        transform: translateX(-100%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+
+.project-card .card{
+    background-color:#eeedea;
+}
+.projects-anime-container{
+     animation: appear 1s ease both;
+    animation-timeline: view();
+    animation-range: entry 30% cover 40%;
+    
+}
+
+@keyframes appear1{
+    from{
+        transform: translateX(100%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+.projects-anime-container-2{
+     animation: appear1 1s ease both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 40%;
+    overflow: hidden;
+    
+}
+.projects-anime-container-2 card{
+    background: #fff3b0 !important;
+}
+/* .projects-anime-container-2::-webkit-scrollbar{
+    display: none;
+} */
+
+@keyframes aboutAnime{
+    from{
+        transform:scale(0.1);
+    }
+    to{
+        transform:scale(1);
+    }
+}
+
+@keyframes aboutAnimeText {
+    from{
+        transform: translateX(100%);
+        
+   
+    }
+    to{
+        transform: translateX(0%);
+        
+
+    }
+}
+@keyframes heroAnimeText {
+    from{
+        transform: translate(100%);
+      
+    }
+    to{
+        transform: translateY(0%);
+      
+    }
 }
