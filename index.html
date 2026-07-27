@@ -19,7 +19,7 @@
   <body>
     <!-- header -->
     <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary shadow-lg fixed-top">
         <div class="container">
           <lord-icon
             src="https://cdn.lordicon.com/srupsmbe.json"
@@ -89,7 +89,7 @@
                 new web development skills.
               </p>
 
-              <button type="button" class="btn-sm p-2">View projects</button>
+              <button type="button" class="btn btn-sm p-2">View projects</button>
             </div>
 
             <div class="img-container col-12 col-md-5 text-center rounded-5">
@@ -262,7 +262,12 @@
             <!-- Card 1 -->
             <div
               class="col-12 col-md-6 col-lg-4 project-card"
-               onclick="window.open('https://jaydeeppal02.github.io/ganga-building-designer/', '_blank')"
+              onclick="
+                window.open(
+                  'https://jaydeeppal02.github.io/ganga-building-designer/',
+                  '_blank',
+                )
+              "
             >
               <div
                 class="card h-100 border-0 rounded-3 shadow-sm"
@@ -295,7 +300,12 @@
             <!-- Card 2 -->
             <div
               class="col-12 col-md-6 col-lg-4 project-card"
-              onclick="window.open('https://jaydeeppal02.github.io/Aurevia-Technology/', '_blank')"
+              onclick="
+                window.open(
+                  'https://jaydeeppal02.github.io/Aurevia-Technology/',
+                  '_blank',
+                )
+              "
             >
               <div
                 class="card h-100 border-0 rounded-3 shadow-sm"
@@ -322,7 +332,9 @@
 
                 <div class="card-body rounded-bottom-5">
                   <p class="card-text">
-                   A responsive Tech Company landing page built with HTML, CSS, and JavaScript featuring modern UI, smooth animations, interactive components, and mobile-friendly design.
+                    A responsive Tech Company landing page built with HTML, CSS,
+                    and JavaScript featuring modern UI, smooth animations,
+                    interactive components, and mobile-friendly design.
                   </p>
                 </div>
               </div>
@@ -331,15 +343,19 @@
             <!-- Card 3 -->
             <div
               class="col-12 col-md-6 col-lg-4 project-card"
-              onclick="window.open('https://jaydeeppal02.github.io/LaunchNest/', '_blank')"
+              onclick="
+                window.open(
+                  'https://jaydeeppal02.github.io/LaunchNest/',
+                  '_blank',
+                )
+              "
             >
               <div
                 class="card h-100 border-0 rounded-3 shadow-sm"
                 title="see website"
               >
                 <div class="d-flex justify-content-between pt-4 px-4">
-                  <h5 class="card-title fw-bold mt-2">LaunchNest
-</h5>
+                  <h5 class="card-title fw-bold mt-2">LaunchNest</h5>
                   <a
                     href=" https://jaydeeppal02.github.io/modern-clock/p"
                     target="_blank"
@@ -359,7 +375,9 @@
 
                 <div class="card-body rounded-bottom-5">
                   <p class="card-text">
-                  A responsive startup agency website built using HTML, CSS, and JavaScript, featuring modern UI, smooth animations, and sections that demonstrate end-to-end startup solutions.
+                    A responsive startup agency website built using HTML, CSS,
+                    and JavaScript, featuring modern UI, smooth animations, and
+                    sections that demonstrate end-to-end startup solutions.
                   </p>
                 </div>
               </div>
@@ -371,7 +389,9 @@
           <div class="row g-4">
             <div
               class="col-12 col-md-6 project-card"
-              onclick="window.open('https://jaydeeppal02.github.io/Travoza/', '_blank')"
+              onclick="
+                window.open('https://jaydeeppal02.github.io/Travoza/', '_blank')
+              "
             >
               <div
                 class="card h-100 border-0 rounded-3 shadow-sm"
@@ -392,7 +412,12 @@
                 </div>
 
                 <div class="card-body rounded-bottom-5">
-                  <p class="card-text">A modern and responsive Travel Website built using HTML, CSS, and JavaScript. Features include a beautiful landing page, destination showcase, tour packages, interactive UI, smooth animations, contact form, and a mobile-friendly design.
+                  <p class="card-text">
+                    A modern and responsive Travel Website built using HTML,
+                    CSS, and JavaScript. Features include a beautiful landing
+                    page, destination showcase, tour packages, interactive UI,
+                    smooth animations, contact form, and a mobile-friendly
+                    design.
                   </p>
                 </div>
               </div>
@@ -400,7 +425,12 @@
 
             <div
               class="col-12 col-md-6 project-card"
-              onclick="window.open('https://jaydeeppal02.github.io/restaurant-cloneapp/', '_blank')"
+              onclick="
+                window.open(
+                  'https://jaydeeppal02.github.io/restaurant-cloneapp/',
+                  '_blank',
+                )
+              "
             >
               <div
                 class="card h-100 border-0 rounded-3 shadow-sm"
@@ -606,18 +636,21 @@
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="main.js"></script>
     <script>
-      const revealItems = document.querySelectorAll('.reveal');
+      const revealItems = document.querySelectorAll(".reveal");
 
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.15
-      });
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+        },
+      );
 
       revealItems.forEach((item) => observer.observe(item));
     </script>

@@ -364,3 +364,43 @@ form small{
       
     }
 }
+
+/* Responsive tweaks: navbar toggler fallback, spacing, and scalable headings/images */
+body{
+    /* increase top padding to account for fixed navbar on small screens */
+    padding-top: 70px;
+}
+
+.navbar-toggler{
+    border-color: rgba(0,0,0,0.08);
+}
+
+.navbar-toggler-icon{
+    /* Ensure toggler icon is visible across themes */
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.container-1 h1{
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+}
+
+/* Small screens adjustments */
+@media (max-width: 767.98px){
+    .container-1{
+        padding: 3rem 0;
+    }
+    .container-1 h1{
+        font-size: 2rem;
+    }
+    .img-container img{
+        max-width: 90%;
+        margin-top: 1rem;
+    }
+    .about-img img{
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 575.98px){
+    body{ padding-top: 78px; }
+}

@@ -1,13 +1,32 @@
+const navLinks = document.querySelectorAll(".nav-link");
+const navCollapse = document.querySelector(".navbar-collapse");
+const navbarToggler = document.querySelector(".navbar-toggler");
+
+navbarToggler?.addEventListener("click", () => {
+  navCollapse?.classList.toggle("show");
+});
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    if (navCollapse?.classList.contains("show")) {
+      if (window.bootstrap && bootstrap.Collapse) {
+        new bootstrap.Collapse(navCollapse).hide();
+      } else {
+        navCollapse.classList.remove("show");
+      }
+    }
+  });
+});
+
+
 // send email
 const form = document.querySelector(".contact-form");
 const submitBtn = document.querySelector(".submit-btn");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  if(validateForm()){
-     sendMail();
+  if (validateForm()) {
+    sendMail();
   }
-  
- 
 });
 
 //validate form
@@ -36,12 +55,11 @@ function validateForm() {
     timeOut();
     return false;
 } 
-if(name.trim()===""){
-    errname.innerText="Name is required! 😔";
-    submitBtn.disabled=true;
+if (name.trim() === "") {
+    errName.innerText = "Name is required! 😔";
+    submitBtn.disabled = true;
     timeOut();
     return false;
-
 }
 if(message.trim()===""){
     errMsg.innerText="Message is required! 😔";
