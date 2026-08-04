@@ -9,7 +9,7 @@ html{
 }
 body{
     overflow-x: hidden;
-    padding-top:55px;
+    padding-top:60px;
 }
 
 
@@ -44,13 +44,20 @@ body{
     transition: all 0.6s ease;
 }
 .content-container{
-    animation:homeAnimeText 1s linear;
-    /* animation-timeline: view();
-    animation-range: entry 0% cover 50%; */
+    opacity: 0;
+}
+.content-container.animate{
+    opacity: 1;
+    animation: heroAnimeText 1s ease forwards;
 }
 .img-container{
-    animation:heroAnime 0.2s linear;
+    opacity: 0;
 }
+.img-container.animate{
+    opacity: 1;
+    animation: heroAnime 0.6s ease forwards;
+}
+
 @keyframes heroAnime {
     from{
         transform: scale(0.6);
@@ -75,18 +82,23 @@ body{
     line-height: 27px;
 }
 .about-img{
-    animation: aboutAnime linear;
-    animation-timeline: view();
-    animation-range: entry 0%;
+    opacity: 0;
+}
+.about-img.animate{
+    opacity: 1;
+    animation: aboutAnime 0.8s ease forwards;
 }
 .about-text{
-    animation: aboutAnimeText linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 50%;
+    opacity: 0;
+}
+.about-text.animate{
+    opacity: 1;
+    animation: aboutAnimeText 0.8s ease forwards;
 }
 .password-card{
     transition: all 0.4s ease;
 }
+
 .password-card:hover{
     transform: translate(0px, -10px);
     transition: all 0.4s ease;
@@ -126,9 +138,11 @@ form small{
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 .text-service{
-    animation: serviceAnime 2s linear;
-    animation-timeline:view() ;
-    animation-range: entry 50% ;
+    opacity: 0;
+}
+.text-service.animate{
+    opacity: 1;
+    animation: serviceAnime 0.8s ease forwards;
 }
 @keyframes serviceAnime {
     from{
@@ -139,9 +153,11 @@ form small{
     }
 }
 .service-card{
-  animation: serviceAnimecard 2s linear;
-    animation-timeline:view() ;
-    animation-range: entry 50% ;
+  opacity: 0;
+}
+.service-card.animate{
+  opacity: 1;
+  animation: serviceAnimecard 0.8s ease forwards;
 }
 @keyframes serviceAnimecard {
     from{
@@ -305,10 +321,11 @@ form small{
     background-color:#eeedea;
 }
 .projects-anime-container{
-     animation: appear 1s ease both;
-    animation-timeline: view();
-    animation-range: entry 30% cover 40%;
-    
+    opacity: 0;
+}
+.projects-anime-container.animate{
+    opacity: 1;
+    animation: appear 1s ease forwards;
 }
 
 @keyframes appear1{
@@ -320,13 +337,14 @@ form small{
     }
 }
 .projects-anime-container-2{
-     animation: appear1 1s ease both;
-    animation-timeline: view();
-    animation-range: entry 20% cover 40%;
+    opacity: 0;
     overflow: hidden;
-    
 }
-.projects-anime-container-2 card{
+.projects-anime-container-2.animate{
+    opacity: 1;
+    animation: appear1 1s ease forwards;
+}
+.projects-anime-container-2 .card{
     background: #fff3b0 !important;
 }
 /* .projects-anime-container-2::-webkit-scrollbar{
@@ -366,18 +384,27 @@ form small{
 }
 
 /* Responsive tweaks: navbar toggler fallback, spacing, and scalable headings/images */
-body{
-    /* increase top padding to account for fixed navbar on small screens */
-    padding-top: 70px;
-}
 
 .navbar-toggler{
-    border-color: rgba(0,0,0,0.08);
+        border-color: rgba(0,0,0,0.08);
 }
 
 .navbar-toggler-icon{
-    /* Ensure toggler icon is visible across themes */
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        /* Ensure toggler icon is visible across themes */
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Small-screen adjustments */
+@media (max-width: 575.98px) {
+    .container-1 {
+        padding: 3rem 0;
+    }
+    .container-1 h1 {
+        font-size: 2rem;
+    }
+    .about-container {
+        padding: 3rem 0;
+    }
 }
 
 .container-1 h1{

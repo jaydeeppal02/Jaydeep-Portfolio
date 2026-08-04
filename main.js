@@ -96,3 +96,21 @@ function sendMail() {
       alert("Failed to send email");
     });
 }
+
+const scrollAnimatedItems = document.querySelectorAll(
+  ".content-container, .img-container, .about-img, .about-text, .text-service, .service-card, .projects-anime-container, .projects-anime-container-2"
+);
+
+const scrollObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+scrollAnimatedItems.forEach((item) => scrollObserver.observe(item));
