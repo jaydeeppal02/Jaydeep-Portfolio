@@ -1,116 +1,183 @@
-const navLinks = document.querySelectorAll(".nav-link");
-const navCollapse = document.querySelector(".navbar-collapse");
-const navbarToggler = document.querySelector(".navbar-toggler");
+// =========================
+// EMAILJS INITIALIZE
+// =========================
 
-navbarToggler?.addEventListener("click", () => {
-  navCollapse?.classList.toggle("show");
-});
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    if (navCollapse?.classList.contains("show")) {
-      if (window.bootstrap && bootstrap.Collapse) {
-        new bootstrap.Collapse(navCollapse).hide();
-      } else {
-        navCollapse.classList.remove("show");
-      }
-    }
-  });
-});
+emailjs.init("8n1IMn-5p_9w45cjY");
 
 
-// send email
+// =========================
+// SELECT ELEMENTS
+// =========================
+
 const form = document.querySelector(".contact-form");
-const submitBtn = document.querySelector(".submit-btn");
+const submitBtn = document.querySelector(".contact-btn");
+
+
+// =========================
+// FORM SUBMIT
+// =========================
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
   if (validateForm()) {
     sendMail();
   }
 });
 
-//validate form
+
+// =========================
+// VALIDATE FORM
+// =========================
+
 function validateForm() {
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let message = document.querySelector("#floatingTextarea").value;
-  
-  //errror
-  let errEmail=document.querySelector(".email-err");
-    let errName=document.querySelector(".name-err");
-      let errMsg=document.querySelector(".msg-err")
+
+  const name = document.getElementById("name");
+  const email = document.getElementById("email");
+  const message = document.getElementById("message");
+
+  const errName = document.querySelector(".name-err");
+  const errEmail = document.querySelector(".email-err");
+  const errMsg = document.querySelector(".msg-err");
 
 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Clear previous errors
+  errName.innerText = "";
+  errEmail.innerText = "";
+  errMsg.innerText = "";
 
-  if (email.trim() === "") {
-    errEmail.innerText="Email is required! 😔";
-    submitBtn.disabled=true;
-    timeOut();
+  name.classList.remove("is-invalid");
+  email.classList.remove("is-invalid");
+  message.classList.remove("is-invalid");
+
+
+  // Email validation pattern
+  const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+  // =========================
+  // NAME
+  // =========================
+
+  if (name.value.trim() === "") {
+
+    errName.innerText = "Name is required 😔";
+    name.classList.add("is-invalid");
+
+    name.focus();
 
     return false;
-} else if (!emailPattern.test(email.trim())) {
-    errEmail.innerText="invalid Email Pattern! 😔";
-    submitBtn.disabled=true;
-    timeOut();
+  }
+
+
+  // =========================
+  // EMAIL
+  // =========================
+
+  if (email.value.trim() === "") {
+
+    errEmail.innerText = "Email is required 😔";
+    email.classList.add("is-invalid");
+
+    email.focus();
+
     return false;
-} 
-if (name.trim() === "") {
-    errName.innerText = "Name is required! 😔";
-    submitBtn.disabled = true;
-    timeOut();
+  }
+
+
+  if (!emailPattern.test(email.value.trim())) {
+
+    errEmail.innerText = "Please enter a valid email 😔";
+    email.classList.add("is-invalid");
+
+    email.focus();
+
     return false;
-}
-if(message.trim()===""){
-    errMsg.innerText="Message is required! 😔";
-    submitBtn.disabled=true;
-    timeOut();
+  }
+
+
+  // =========================
+  // MESSAGE
+  // =========================
+
+  if (message.value.trim() === "") {
+
+    errMsg.innerText = "Message is required 😔";
+    message.classList.add("is-invalid");
+
+    message.focus();
+
     return false;
-}
-return true;
+  }
+
+
+  // Everything is valid
+  return true;
 }
 
-//timeOut
 
-function timeOut(){
-      setTimeout(()=>{
-        submitBtn.disabled=false;
-    },3000)
-}
+// =========================
+// SEND MAIL USING EMAILJS
+// =========================
 
-// send mail
 function sendMail() {
-  let params = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.querySelector("#floatingTextarea").value,
+
+  const params = {
+    name: document.getElementById("name").value.trim(),
+
+    email: document.getElementById("email").value.trim(),
+
+    message: document.getElementById("message").value.trim()
   };
 
+
+  // Disable button
+  submitBtn.disabled = true;
+
+  submitBtn.innerHTML = `
+    Sending...
+    <i class="bi bi-arrow-repeat ms-2"></i>
+  `;
+
+
+  // =========================
+  // EMAILJS SEND
+  // =========================
+
   emailjs
-    .send("service_q4qhptf", "template_4tf1tt4", params)
-    .then(function () {
-      alert("Your message sent successfully 😊");
+    .send(
+      "service_q4qhptf",
+      "template_4tf1tt4",
+      params
+    )
+
+    .then((response) => {
+
+      console.log("SUCCESS:", response);
+
+      alert("Your message was sent successfully 😊");
+
+      form.reset();
+
     })
-    .catch(function (error) {
-      console.log(error);
-      alert("Failed to send email");
+
+    .catch((error) => {
+
+      console.error("EMAILJS ERROR:", error);
+
+      alert("Failed to send email ❌");
+
+    })
+
+    .finally(() => {
+
+      submitBtn.disabled = false;
+
+      submitBtn.innerHTML = `
+        Send Message
+        <i class="bi bi-send ms-2"></i>
+      `;
+
     });
 }
-
-const scrollAnimatedItems = document.querySelectorAll(
-  ".content-container, .img-container, .about-img, .about-text, .text-service, .service-card, .projects-anime-container, .projects-anime-container-2"
-);
-
-const scrollObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.2 }
-);
-
-scrollAnimatedItems.forEach((item) => scrollObserver.observe(item));
